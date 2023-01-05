@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE>
+<html lang='en'>
+    <head>
+        <title>Login Page</title>
+        <style>
+            a { text-decoration: none; color:black; }
+          </style>
+    </head>
+    <body>
+        <h1>Hey Folks.</h1>
+        <p>Hello Welcome to Login page.This is Index Page.</p>
+
+        <button type="click" style="margin-bottom:2%;"><a href='/signup'>Register</a></button><br><br>
+
+        <div>
+            {% for message in messages %}
+            <h5> {{message}} </h5>
+            {% endfor %}
+        </div>
+
+        <form action="" method="POST">
+
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" style="border: 1px solid #d3d5d8 !important;"><br>
+            <input type="password" name="password" placeholder="********" style="border: 1px solid #d3d5d8 !important;"><br>
+            <br>
+            <button type="submit">Login</button>
+            <div>
+                <p>Forgot your passowrd! <a href="/forgot"> Recover here</a></p>
+            </div>
+            <div>
+                <p> Not registered? <a href="/signup"> Create a account </a></p>
+            </div>
+        </form>
+    </body>
+</html>

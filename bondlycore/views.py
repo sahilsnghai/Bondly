@@ -9,7 +9,7 @@ from itertools import chain
 
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'header.html')
 
 
 @login_required(login_url="login")
@@ -21,6 +21,10 @@ def settings(request):
             image = user_profile.img_profile
             bio = request.POST.get("bio")
             location = request.POST.get('location')
+            Fname = request.POST.get("fname")
+            Mname = request.POST.get("lname")
+            Lname = request.POST.get("lname")
+
 
             user_profile.img_profile = image
             user_profile.location = location
@@ -33,6 +37,9 @@ def settings(request):
             image = request.FILES.get("image")
             bio = request.POST.get("bio")
             location = request.POST.get('location')
+            Fname = request.POST.get("fname")
+            Mname = request.POST.get("lname")
+            Lname = request.POST.get("lname")
 
             user_profile.img_profile = image
             user_profile.location = location
@@ -71,11 +78,12 @@ def likes(request):
 def signup(request):
 
     if request.method == "POST":
+        fname = request.POST.get('fname')
+        lname = request.POST.get('lname')
         username = request.POST.get('username')
         email = request.POST.get('email')
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')
-
         if password1 == password2:
             if User.objects.filter(email=email).exists():
                 messages.info(request, "Email Already Registered.")
@@ -87,7 +95,7 @@ def signup(request):
 
             else:
                 user = User.objects.create_user(
-                    username=username, email=email, password=password1)
+                    username=username, email=email, password=password1,first_name=fname, last_name=lname)
                 user.save()
 
                 user_login = auth.authenticate(
@@ -95,6 +103,7 @@ def signup(request):
                 auth.login(request, user_login)
 
                 user_model = User.objects.get(username=username)
+                
                 new_profile = models.Profile.objects.create(
                     usr=user_model, id_usr=user_model.id)
                 new_profile.save()
@@ -249,3 +258,6 @@ def search(request):
         
         user_profile_list = list(chain(*user_profile_list))
     return render(request, 'search.html', {'user_profile': user_profile, 'user_profile_list': user_profile_list})
+
+def aboutus(request):
+    return render(request,'about.html')

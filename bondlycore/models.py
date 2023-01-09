@@ -11,10 +11,11 @@ class Profile(models.Model):
     """docstring for Profile."""
     usr: str = models.ForeignKey(User, on_delete=models.CASCADE)
     id_usr: int = models.IntegerField()
-    Fname:str = models.TextField(blank=True,default=None)
-    Mname:str = models.TextField(blank=True,default=None)
-    Lname:str = models.TextField(blank=True,default=None)
-    bio: str = models.TextField(blank=True,default=None)
+    Fname:str = models.TextField(blank=True,null=True)
+    Mname:str = models.TextField(blank=True,null=True)
+    Lname:str = models.TextField(blank=True,null=True)
+    Fhone:int = models.IntegerField(blank=True,null=True)
+    bio: str = models.TextField(blank=True)
     img_profile = models.ImageField(
         upload_to='ProfileIMG', default="blankprofile.png")
     location: str = models.CharField(max_length=250)

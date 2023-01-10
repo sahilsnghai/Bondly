@@ -8,18 +8,24 @@ html,body{
   width: 100%;
   height: 100%;
   font-family: Voyage;
-  background-color: rgb(200,209,224);
+  /* background-color: black; */
+  background-color: rgb(187,195,197);
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
   color: black;
+  font-family: montserrat;
   /* background-color: black; */
 }
 .index{
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
 }
+/* .index1{
+  background-color: black ;
+} */
 .indextitle{
   font: 900 4vmax Voyage;
 }
@@ -29,7 +35,11 @@ html,body{
 }
 
 .aboutTitle{
-  font: 900 5vmax Amanda;
+  
+  font: 900 5vmax gilroy;
+}
+.aboutHeading{
+  font: 500 3vmax gilroy;
 }
 .about{
   width: 100%;

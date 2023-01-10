@@ -9,7 +9,7 @@ from itertools import chain
 
 
 def index(request):
-    return render(request, 'header.html')
+    return render(request, 'index.html')
 
 
 @login_required(login_url="login")

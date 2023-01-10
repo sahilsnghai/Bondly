@@ -1,35 +1,49 @@
-{% load static %}
 
-<!DOCTYPE>
-<html>
-    <head>
-        <title>Sign up Page</title>
-        <style>
-            a { text-decoration: none; color:black;}
-          </style>
-    </head>
-    <body>
-        {% include 'header.html' %}
-        <h1>Hey Folks.</h1>
-        <p>Hello Welcome to Sign up page.</p>
+{% include 'header.html' %}
+<div class="d-flex h-100 justify-content-between align-items-center flex-column">
+    {% include 'nav.html' %}
+    <h1>Hello Welcome to Sign up page.</h1>
 
-        <div>
-            {% for message in messages %}
-            <h5> {{message}} </h5>
-            {% endfor %}
+    <div>
+        {% for message in messages %}
+        <h5> {{message}} </h5>
+        {% endfor %}
+    </div>
+    <form class="d-flex justify-content-between align-items-center flex-column" action="" method="POST">
+    
+        {% csrf_token %}
+
+        <div class="form-outline">
+            <label class="form-label" for="form12">First Name</label>
+            <input required class="form-control" type="text" name="fname" placeholder="sahil">
         </div>
-        <form action="" method="POST">
-            {% csrf_token %}
-            <input type="text" name="fname" placeholder="First Name" style="border: 1px solid #d3d5d8 !important;"><br>
-            <input type="text" name="lname" placeholder="Last Name" style="border: 1px solid #d3d5d8 !important;"><br>
-            <input type="text" name="username" placeholder="Username" style="border: 1px solid #d3d5d8 !important;"><br>
-            <input type="email" name="email" placeholder="Email" style="border: 1px solid #d3d5d8 !important;"><br>
-            <input type="password" name="password1" placeholder="Password" style="border: 1px solid #d3d5d8 !important;"><br>
-            <input type="password" name="password2" placeholder="Confirm Password" style="border: 1px solid #d3d5d8 !important;"><br>
-            <button type="submit">Sign Up</button>
-            <div>
-                <p>Do you have an Account?. <button><a href='/login'>login</a></button> </p>
-            </div>
-        </form>
-    </body>
-</html>
+        <div class="form-outline">
+            <label class="form-label" for="form12">Last Name</label>
+            <input required class="form-control" type="text" name="lname" placeholder="singhai">
+        </div>
+        <div class="form-outline">
+            <label class="form-label" for="form12">User Name</label>
+            <input required class="form-control" type="text" name="username" placeholder="Sahil_singhai">
+        </div>
+        <div class="form-outline">
+            <label class="form-label" for="form12">Email</label>
+            <input required class="form-control" type="email" name="email" placeholder="Sahilsinghai@gmail.com">
+        </div>
+        <div class="form-outline">
+            <label class="form-label" for="form12">Password</label>
+            <input required class="form-control"  type="password" name="password1" placeholder="Password">
+        </div>
+        <div class="form-outline">
+            <label class="form-label" for="form12">Confirm Password</label>
+            <input required class="form-control" type="password" name="password2" placeholder="Confirm Password">
+        </div>
+        <br>
+        <button class="btn btn-dark" type="submit">Submit</button>
+
+        <div class="d-flex justify-content-between align-items-center flex-column">
+                <p>Do you have an Account?. <a class="text-warning text-decoration-none" href='/login'>login</a></p>
+        </div>
+    </form>
+    {% include 'foot.html' %}
+</div>
+{% include "footer.html" %}

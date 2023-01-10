@@ -1,39 +1,37 @@
-{% load static %}
-
-<!DOCTYPE>
-<html lang='en'>
-    <head>
-        <title>Login Page</title>
-        <style>
-            a { text-decoration: none; color:black; }
-          </style>
-    </head>
-    <body>
+        {% load static %}
         {% include 'header.html' %}
-        <h1>Hey Folks.</h1>
-        <p>Hello Welcome to Login page.This is Index Page.</p>
-
-        <button type="click" style="margin-bottom:2%;"><a href='/signup'>Register</a></button><br><br>
-
-        <div>
-            {% for message in messages %}
-            <h5> {{message}} </h5>
-            {% endfor %}
+        <div class="d-flex h-100 justify-content-between align-items-center flex-column">
+            {% include 'nav.html' %}
+            <div class="d-flex justify-content-between align-items-center flex-column">
+                <h1>Hey Folks.</h1>
+            </div> 
+            <div class="d-flex justify-content-between align-items-center flex-column">
+                {% for message in messages %}
+                <h5> {{message}} </h5>
+                {% endfor %}
+            </div>
+    
+            <form class="d-flex justify-content-between align-items-center flex-column" action="" method="POST">
+    
+                {% csrf_token %}
+    
+                <div class="form-outline">
+                    <label class="form-label" for="form12">User Name</label>
+                    <input required class="form-control" type="text" name="username" placeholder="Example: Sahil_singhai">
+                </div>
+                <div class="form-outline">
+                    <label class="form-label" for="form12">Password</label>
+                    <input required class="form-control" type="password" name="password" placeholder="********">
+                </div>
+                <br>
+                <button class="btn btn-dark" type="submit">Login</button>
+                <br>
+                <br>
+                <div class="d-flex justify-content-between align-items-center flex-column">
+                    <p>Forgot your passowrd! <a class="text-danger text-decoration-nonehref=/forgot"> Recover here</a></p>
+                    <p> Not registered? <a class="text-danger text-decoration-none" href="/signup"> Create a account </a></p>
+                </div>
+            </form>
+            {% include 'foot.html' %}
         </div>
-
-        <form action="" method="POST">
-
-            {% csrf_token %}
-            <input type="text" name="username" placeholder="Username" style="border: 1px solid #d3d5d8 !important;"><br>
-            <input type="password" name="password" placeholder="********" style="border: 1px solid #d3d5d8 !important;"><br>
-            <br>
-            <button type="submit">Login</button>
-            <div>
-                <p>Forgot your passowrd! <a href="/forgot"> Recover here</a></p>
-            </div>
-            <div>
-                <p> Not registered? <a href="/signup"> Create a account </a></p>
-            </div>
-        </form>
-    </body>
-</html>
+        {% include "footer.html" %}

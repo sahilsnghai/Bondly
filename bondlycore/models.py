@@ -6,6 +6,7 @@ import uuid
 User = get_user_model()
 
 
+
 # Create your models here.
 class Profile(models.Model):
     """docstring for Profile."""
@@ -19,6 +20,7 @@ class Profile(models.Model):
     img_profile = models.ImageField(
         upload_to='ProfileIMG', default="blankprofile.png")
     location: str = models.CharField(max_length=250)
+    
 
     def __str__(self):
         return self.usr.username

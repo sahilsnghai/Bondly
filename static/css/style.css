@@ -1,4 +1,71 @@
-body {
+*{
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+}
+
+html,body{
+  width: 100%;
+  height: 100%;
+  font-family: Voyage;
+  /* background-color: black; */
+  background-color: rgb(187,195,197);
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+  color: black;
+  font-family: montserrat;
+  /* background-color: black; */
+}
+.index{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+/* .index1{
+  background-color: black ;
+} */
+.indextitle{
+  font: 900 4vmax Voyage;
+}
+
+.indexSubHeading{
+  font: 600 2vmax Voyage
+}
+
+.aboutTitle{
+  
+  font: 900 5vmax gilroy;
+}
+.aboutHeading{
+  font: 500 3vmax gilroy;
+}
+.about{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+nav{
+  font: 900 1vmax Montserrat;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer{
+  width: 100%; 
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  font: 900 1vmax Montserrat;
+}
+
+/* body {
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   background-color: #fff;
   height: 200vh;
@@ -358,4 +425,4 @@ a {
     @media (max-width: 991.98px) {
       .sticky-wrapper .shrink {
         padding-top: 30px !important;
-        padding-bottom: 30px !important; } }
+        padding-bottom: 30px !important; } } */

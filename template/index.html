@@ -1,21 +1,13 @@
 {% load static %}
-
-<!DOCTYPE>
-<html>
-    <head>
-        <title>Index of Bondly</title>
-        <style>
-            a { text-decoration: none; color:black;}
-          </style>
-    </head>
-    <body>
         {% include 'header.html' %}
-        <h1>Hey Folks.</h1>
-        <p>Hello Welcome to Bondly. An Social Media Application for Teens.
-        </p>
-        <button> <a href="signup" style="margin:2%;">signup</a> </button>
-        
-        <button><a href="login" style="margin:2%;">login</a></button>
-
-    </body>
-</html>
+        <div class="index">
+            {% include 'nav.html' %}
+            <h1 class="indextitle">Hey Folks.</h1>
+            <p class="indexSubHeading">Hello Welcome to Bondly. An Social Media Application for Teens.</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <a class="btn btn-dark" href="signup" style="margin:2%;">signup</a>
+                <a class="btn btn-dark" href="login" style="margin:2%;">login</a>
+            </div>
+            {% include 'foot.html' %}
+        </div>
+        {% include "footer.html" %}

@@ -9,7 +9,8 @@ from itertools import chain
 
 
 def index(request):
-    return render(request, 'header.html')
+    auth.logout(request)
+    return render(request, 'index.html')
 
 
 @login_required(login_url="login")
@@ -82,16 +83,17 @@ def signup(request):
         lname = request.POST.get('lname')
         username = request.POST.get('username')
         email = request.POST.get('email')
-        password1 = request.POST.get('password1')
-        password2 = request.POST.get('password2')
-        if password1 == password2:
+        password1 = request.POST.get('password')
+        password2 = request.POST.get('cpassword')
+
+        if password1 == password2 and password1 != None:
             if User.objects.filter(email=email).exists():
                 messages.info(request, "Email Already Registered.")
-                return redirect('signup')
+                return redirect('login')
 
             elif User.objects.filter(username=username).exists():
                 messages.info(request, "Username Already Registered.")
-                return redirect('signup')
+                return redirect('login')
 
             else:
                 user = User.objects.create_user(
@@ -113,10 +115,10 @@ def signup(request):
         else:
             messages.info(request, "Password does not matched.")
 
-            return redirect('signup')
+            return redirect('login')
 
     else:
-        return render(request, 'signup.html')
+        return render(request, 'login.html')
 
 
 def login(request):
@@ -190,9 +192,9 @@ def upload(request):
 def profile(request, pf):
     user_object = User.objects.get(username=pf)
     user_profile = models.Profile.objects.get(usr=user_object)
+    print(request.user.__doc__)
     posts = models.Post.objects.filter(user=pf)
     postsNum = len(posts)
-
     follor = request.user.username
 
     if models.Followers.objects.filter(follower=follor, user=pf).first():

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from cassandra.auth import PlainTextAuthProvider
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-h0=j9q)sl+t_ifbisqza)po-p1kdr&m5o1t@w_ti^)@hi_@7li'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['www.bondly.onrender.com','https://bondly.onrender.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
 
 ]
 
+# SESSION_ENGINE = 'django-cassandra-engine.sessions.backends.db'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -76,13 +78,27 @@ WSGI_APPLICATION = 'bondlycode.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django_cassandra_engine',
+#         'NAME': 'bondlymedia',
+#         'OPTIONS':{
+#             'connection':{
+#                 'auth_provider':PlainTextAuthProvider('GczmYWOlybOiZBLmBOUvFUmE','8F9KB-HiPqaC3rQshLdGz+4Tv8LRnCXN8nO9Wphl+gpPbv,l7+._bDx5-W1tH5NGJZ8kBT6BZoziOeDvj7dgksZlOGY1ZN.Kg4jk-.7_sgIRwxHSvcU2BMPBJZKF+PFB'),
+#                 'cloud':{
+#                     'secure_connect_bundle':'secure-connect-bondly.zip'
+#                 }
+#             }
+#         }
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-print(BASE_DIR)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

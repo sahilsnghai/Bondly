@@ -1,27 +1,32 @@
 {% load static %}
-
-<!DOCTYPE>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <!-- <h4>Welcome {{user.username}}</h4> -->
-</head>
-
-<body style="background-color: silver;">
-    {% include 'header.html' %}
+{% include 'header.html' %}
+<body>
     <br>
-    
-    <div style="font-weight: 100; color:black ;">
+    <section>
+    <div class="center"' id="about">
+        <h2>About Us</h2>
     <p> The project Bondly was created by third-tier college students.
          My name is Sahil Singhai, and Sanskrati Agarwal is my co-developer.
           We want to support the transition of our generation away from the negative social media environments 
           and onto a platform where people may be transparent and discuss their lives rather than flaunt them. 
           Our website Bondly is available here. 
         The fact that our website is non addicting is the finest aspect.  </p></div>
-</body>
+    </section>
 
-</html>
+        <section class='center' id="services">
+            <h2>Our Services</h2>
+            <ul>
+                <li>Web Design</li>
+                <li>Web Development</li>
+                <li>API Development</li>
+            </ul>
+        </section>
+        <section class='center'  id="contact">
+            <h2>Contact Us</h2>
+            <p>Email: <a href="mailto:sahij212@gmail.com">sahij212@gmail.com</a></p>
+            <p>Phone: 555-555-5555</p>
+            <p><a href="https://www.google.com/maps/search/Flat+no.+201,+Sweet+home,+4,+JK+Rd,+Indrapuri+A+sector,+Indrapuri,+Bhopal,+Madhya%C2%A0Pradesh%C2%A0462022/@23.2533181,77.4560953,15z" >Address: Flat no. 201, Sweet home, 4, JK Rd, Indrapuri A sector, Indrapuri, Bhopal, Madhya Pradesh 462022</a></p>
+        </section>
+        <br>
+</body>
+{% include 'footer.html' %}

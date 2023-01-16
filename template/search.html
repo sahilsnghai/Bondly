@@ -1,71 +1,21 @@
 {% load static %}
-
-<!DOCTYPE>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <title>HomePage </title>
-    <h4>Welcome {{user.username}}</h4>
-    <style>
-        a {
-            text-decoration: none;
-            color: black;
-            border: thin;
-        }
-
-        .button {
-            appearance: auto;
-            writing-mode: horizontal-tb !important;
-            text-rendering: auto;
-            border: 0.2em;
-            border-width: 0.01em;
-            letter-spacing: normal;
-            word-spacing: normal;
-            line-height: normal;
-            text-transform: none;
-            text-shadow: none;
-            padding: 1mm;
-            /* padding-left: 1mm; */
-            display: inline-block;
-            text-align: center;
-            align-items: flex-start;
-            cursor: default;
-            box-sizing: border-box;
-            border-style: outset;
-            border-color: buttonborder;
-            border-image: initial;
-        }
-    </style>
-</head>
-
+{% include 'header.html' %}
 <body>
-    <h1>Hey Folks.</h1>
-    <p> Hello Welcome to Bondly. An Social Media Application for Teens.
-        This is Search Page.
-    </p>
-
     <form action="/search" method="POST">
         {% csrf_token %}
         <div class="left-side">
-            <!-- <input type="text" name="username">&nbsp; -->
             <input type='text' list="usernames" name="username">
             <button type="submit" style="padding-top:0.1px"><i>&#10159;</i></button>
         </div>
     </form>
-    <a class='button' style='padding-left: 3px; padding-right: 3px;' href="/home">Home</a>
-    <br>
     {% for users in user_profile_list %}
     <section class="search-result-item">
-        <a class="image-link" href="/profile/{{users.user}}"><img class="image" width=100 height=100 src="{{users.img_profile.url}}">
+        <a class="image-link" href="/profile/{{users.usr}}"><img class="image" width=100 height=100 src="{{users.img_profile.url}}">
         </a>
-        <div href="/profile/{{users.user}}" class="search-result-item-body">
+        <div href="/profile/{{users.usr}}" >
             <div class="row">
-                <div  href="/profile/{{users.user}}" class="col-sm-9">
-                    <h4 class="search-result-item-heading"><a href="/profile/{{users.user}}"><b>@{{users.usr}}</b></a>
+                <div  href="/profile/{{users.usr}}" class="col-sm-9">
+                    <h4 class="search-result-item-heading"><a href="/profile/{{users.usr}}"><b>@{{users.usr}}</b></a>
                     </h4>
                     <p class="info">{{users.location}}  &nbsp;  {{users.bio}}</p>
                     <!-- <p class="description">{{users.bio}}</p> -->
@@ -74,10 +24,5 @@
         </div>
     </section>
     {% endfor %}
-
-
-
-
 </body>
-
-</html>
+{% include 'footer.html' %}

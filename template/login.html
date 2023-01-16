@@ -1,39 +1,49 @@
 {% load static %}
+{% include 'header.html' %}
+<main>
 
-<!DOCTYPE>
-<html lang='en'>
-    <head>
-        <title>Login Page</title>
-        <style>
-            a { text-decoration: none; color:black; }
-          </style>
-    </head>
-    <body>
-        {% include 'header.html' %}
-        <h1>Hey Folks.</h1>
-        <p>Hello Welcome to Login page.This is Index Page.</p>
+  <section class='center' id="login">
+    <h2>Login</h2>
+    <form action="{% url 'login' %}" method="POST" id="login">
+      {% csrf_token %}
+      <fieldset style="display: inline-block;">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <br>
+        <button type="submit">Log in</button>
+      </fieldset>
+    </form>
+  </section>
 
-        <button type="click" style="margin-bottom:2%;"><a href='/signup'>Register</a></button><br><br>
-
-        <div>
-            {% for message in messages %}
-            <h5> {{message}} </h5>
-            {% endfor %}
-        </div>
-
-        <form action="" method="POST">
-
-            {% csrf_token %}
-            <input type="text" name="username" placeholder="Username" style="border: 1px solid #d3d5d8 !important;"><br>
-            <input type="password" name="password" placeholder="********" style="border: 1px solid #d3d5d8 !important;"><br>
-            <br>
-            <button type="submit">Login</button>
-            <div>
-                <p>Forgot your passowrd! <a href="/forgot"> Recover here</a></p>
-            </div>
-            <div>
-                <p> Not registered? <a href="/signup"> Create a account </a></p>
-            </div>
-        </form>
-    </body>
-</html>
+  <br>
+  
+  <section class='center' id="signup">
+    <h2>Signup</h2>
+    <form action="{% url 'signup' %}" method="POST">
+      {% csrf_token %}
+      <fieldset style="display: inline-block;">
+        <label for="fname">First Name:</label>
+        <input class='input' type="text" placeholder="First Name" name="fname">
+        <br><label for="lname">Last Name:</label>
+        <input class='input' type="text" placeholder="Last Name" name="lname">
+        <br>
+        <label for="username">Username:</label>
+        <input class='input' type="text" placeholder="username" name="username">
+        <br>
+        <label for="email">Email:</label>
+        <input class='input' type="email" placeholder="email" name="email">
+        <br>
+        <label for="password">Password:</label>
+        <input class='input' type="password" placeholder="password" name="password">
+        <br>
+        <label for="confirm_password">Confirm Password:</label>
+        <input class='input' type="password" placeholder="confirm_password" name="cpassword">
+        <br> <br>
+        <button type="submit">Sign Up</button>
+      </fieldset>
+    </form>
+  </section>
+  {% include 'footer.html' %}

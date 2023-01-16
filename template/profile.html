@@ -1,59 +1,11 @@
 {% load static %}
-
-<!DOCTYPE>
-<html>
-
-<head>
-    <title>{{user_profile.usr.username}}</title>
-    <style>
-        a {
-            text-decoration: none;
-            color: black;
-        }
-
-        .demo div {
-            float: left;
-            clear: none;
-        }
-
-        .button {
-            appearance: auto;
-            font-style:Arial;
-            writing-mode: horizontal-tb !important;
-            text-rendering: auto;
-            border: 0.2em;
-            border-width: 0.01em;
-            letter-spacing: normal;
-            word-spacing: normal;
-            line-height: normal;
-            text-transform: none;
-            text-shadow: none;
-            padding: 0.01em;
-            display: inline-block;
-            text-align: center;
-            align-items: flex-start;
-            cursor: default;
-            box-sizing: border-box;
-            border-style: outset;
-            border-color: buttonborder;
-            border-image: initial;
-        }
-    </style>
-</head>
-
+{% include 'header.html' %}
 <body>
-    {% include 'header.html' %}
-    <h1>Hey {{user.username}}</h1>
-    <p>Welcome to Bondly. An Social Media Application for Teens.
-        profile page of {{user_profile.usr.username}}
-    </p>
-
     <section>
         <div>
             <p>Bio &#10159; {{user_profile.bio}}</p>
         </div>
     </section>
-    <img width="100" height="100" style='margin: 2%;' src="{{user_profile.img_profile.url}}" />
     <br>
     <div>
         {% if postsNum == 0 %}
@@ -77,45 +29,13 @@
             <pre>{{following}} following</pre>
         </span>
     </div>
-    {% if user_object.username == user.username %}
-    <a class='button' href="/home">home</a>
-    <a class='button' href="/logout">logout</a>
-    <a class='button' href="/settings">Account Settings</a>
-    {% else %}
-   
-    <!-- <button onclick="location.href='/follow'" type="POST">{{text}}</button> -->
-        <div >
-            <form action="/follow" method="POST">
-                {% csrf_token %}
-                <a class='button' style='padding-left: 3px; padding-right: 3px;' href="/home">Home</a>
-                <input type="hidden" value="{{user.username}}" name="follower" />
-                <input type="hidden" value="{{user_profile.usr.username}}" name="username" />
-                <a class="button" ><button type='submit' style="border:0pc; background-color:white; padding-bottom:0; padding-top:2.7px;" >{{text}}</button></a>
-                {% endif %}
-            </form>
-        </div>
-
-
-    <br>
     <hr>
 
     {% for post in posts %}
-    <div>
-        {{user_profile}}
-    </div>
-
-    <nobr><div>
-        <a href="#">
-            <a class="button">Delete Post</a>
-        </a>
-    </div></nobr>
-    <!-- <br> -->
+    {{user_profile}}<br>
     <a class="strip" href="{{post.image.url}}" title="" height='50%' width="45%">
         <img src="{{post.image.url}}" height='50%' width="45%" alt=""></a>
-    <p>{{post.caption}}</p>
-    </li>
     {% endfor %}
 
 </body>
-
-</html>
+{% include 'footer.html' %}

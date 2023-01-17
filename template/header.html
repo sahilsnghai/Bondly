@@ -17,9 +17,9 @@
     <nav>
       {% endif %}
       <ul class="nav">
-        <div>
+        <!-- <div>
           <img class="profile-img" src="{{user_profile.img_profile.url}}" />
-        </div>
+        </div> -->
 
         {% if request.path != '/' and user.is_authenticated == False %}
         <li><a href="/">Home</a></li>

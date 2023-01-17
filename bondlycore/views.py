@@ -9,7 +9,6 @@ from itertools import chain
 
 
 def index(request):
-    auth.logout(request)
     return render(request, 'index.html')
 
 

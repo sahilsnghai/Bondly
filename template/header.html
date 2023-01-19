@@ -12,14 +12,21 @@
     <div><b><a href="{% url 'index' %}">Bondly</a></b></div>
   </header>
   {% if user.is_authenticated  %}
-  <nav>
+  <nav style="text-align: right;">
     {% else %}
     <nav>
       {% endif %}
       <ul class="nav">
-        <!-- <div>
-          <img class="profile-img" src="{{user_profile.img_profile.url}}" />
-        </div> -->
+
+        <div style="text-align: left;">
+          <img class="profile-img" src="{{ user_object.img_profile.url }}" />
+        </div>
+
+        <!-- {{ user.Profile.img_profile.url }} -->
+        {{ request.user.username }}
+
+
+        
 
         {% if request.path != '/' and user.is_authenticated == False %}
         <li><a href="/">Home</a></li>

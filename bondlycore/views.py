@@ -127,7 +127,8 @@ def login(request):
         password = request.POST.get("password")
 
         user = auth.authenticate(username=username, password=password)
-
+        user_obj = User.objects.get(username=username)
+        user_profile = models.Profile.objects.get(usr=user_obj)
         if user is not None:
             auth.login(request, user)
             return redirect('home')
@@ -149,7 +150,6 @@ def logout(request):
 def home(request):
     user_obj = User.objects.get(username=request.user.username)
     user_profile = models.Profile.objects.get(usr=user_obj)
-    # print(user_profile)
 
     followingList = []
     feed = []
@@ -167,7 +167,7 @@ def home(request):
     feedList = list(chain(*feed))
 
     # feed_post = models.Post.objects.all()
-    context = {"user_profile": user_profile, "posts": feedList}
+    context = {"user_profile": user_profile,"user_object": user_obj, "posts": feedList}
     return render(request, 'home.html', context)
 
 
@@ -213,6 +213,7 @@ def profile(request, pf):
         "followers": followers,
         "following": following
         }
+    print('type:', type(user_profile.img_profile.url),user_profile.img_profile.url, end="")
     return render(request, 'profile.html', context)
 
 

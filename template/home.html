@@ -3,6 +3,8 @@
 <body>
     <form action="/search" method="POST">
         {% csrf_token %}
+        <input type="text" name="username" placeholder="Username" >
+        <button type="submit">Search</button> 
         <div class="left-side">
 
     <hr>
@@ -20,13 +22,6 @@
         </div>
     </form>
     <img width="100" height="100" style='margin: 2%;' src="{{user_profile.img_profile.url}}" />
-<div class="d-flex justify-content-between align-items-center" >
-    <a class="btn btn-dark" href="/profile/{{user.username}}">Profile</a>
-    &nbsp
-    <a class="btn btn-dark" href="/settings">Settings</a>
-    &nbsp
-    <a class="btn btn-dark" href="/logout">Logout</a>
-</div>
     <hr>
     <form class="d-flex justify-content-between align-items-center flex-column" action="upload" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
@@ -112,15 +107,11 @@
                             </a>
                         </div>
                         <p>
-                            <!-- <a href="/profile/{{post.user}}"><strong>{{post.user}}</strong></a>--> {{post.caption}}
+                         {{post.caption}}
                         </p>
                     </div>
                 </div>
                 {% endfor %}
             </div>
-
-
-
-
 </body>
 {% include 'footer.html' %}

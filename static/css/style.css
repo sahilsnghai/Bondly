@@ -1,25 +1,33 @@
-html{
-  position:relative;
+html {
+  position: absolute;
   min-height: 100%;
+  width: 100%;
 }
+
 body {
+  position: relative;
+  min-height: 100vh;
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0;
-  display:block;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(245, 239, 239);
+  /* 245, 239, 239 */
 }
 
 header {
+  position: relative;
   display: grid;
   background-color: #3498db;
   color: white;
   text-align: left;
-  padding: 1rem;
+  padding: 20px 0;
+  width: 100%;
 }
 
 header a {
   text-decoration: solid;
-  text-size-adjust:inherit;
+  text-size-adjust: inherit;
   font-size: x-large;
   color: beige;
   text-align: left;
@@ -29,41 +37,47 @@ header a {
 header h1 {
   margin: 0;
 }
+
 nav {
-    background-color: #34495e;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    width: 100%;
-    justify-content: left;
+  position: relative;
+  background-color: #34495e;
+  /* #34495e */
+  color: white;
+  padding: 10px 0;
+  width: 100%;
+  text-align: center;
 }
-nav ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+
+nav ul {
+  list-style-type: none;
+  margin: auto;
+  padding: 0;
+  width: 18%;
 }
+
 nav ul div {
   position: relative;
-  justify-items: left;
   width: auto;
   row-gap: 40px;
+  display: flex;
 }
-/* nav ul div img{
-  text-align: left;
-  position: sticky;
-  border-radius: 60px ;
-  width: 40px;
-} */
-nav ul li{
-    display: inline-block;
-    margin-right: 1rem;
+
+nav div {
+  width: 20%;
 }
-nav ul li a{
-    color: white;
-    text-decoration: none;
+
+nav ul li {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
 }
 
 main {
+
   padding: 0;
 }
 
@@ -72,13 +86,15 @@ section {
 }
 
 footer {
-  position: absolute;
+  position: relative;
+  height: 50px;
+  margin-top: auto;
   bottom: 0;
   background-color: #34495e;
   color: white;
   width: 100%;
   text-align: center;
-  padding:0px;
+  padding: 7px 0;
 }
 
 .center {
@@ -88,16 +104,39 @@ footer {
   padding: 10px;
 }
 
-.button1{
-  background:none; 
-  border:0; 
-  color:white;
+.button1 {
+  background: none;
+  border: 0;
+  color: white;
   font-size: medium;
   padding: 0px;
 }
 
-.profile-img{
+.profile-img {
   width: 80px;
   height: 80px;
   border-radius: 50%;
+}
+
+.nav-img {
+  text-align: center;
+  width: auto;
+  height: 100px;
+  padding: 10px;
+}
+
+.LoggedIn {
+  margin: auto;
+  text-align: center;
+}
+
+.signup {
+  margin-top: 100px;
+  padding: 0;
+}
+
+.downloadIcon{
+  color: black; 
+  text-align: right;
+  margin-left: 200px;
 }

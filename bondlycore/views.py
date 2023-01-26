@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.shortcuts import render, redirect,get_object_or_404
+from django.http import HttpResponse,HttpRequest
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -9,6 +9,7 @@ from itertools import chain
 
 
 def index(request):
+    logout(request)
     return render(request, 'index.html')
 
 
@@ -29,7 +30,9 @@ def settings(request):
             user_profile.img_profile = image
             user_profile.location = location
             user_profile.bio = bio
-
+            user_profile.Fname=Fname
+            user_profile.Mname=Mname
+            user_profile.Lname=Lname
             user_profile.save()
 
         if request.FILES.get("image") != None:
@@ -44,6 +47,9 @@ def settings(request):
             user_profile.img_profile = image
             user_profile.location = location
             user_profile.bio = bio
+            user_profile.Fname=Fname
+            user_profile.Mname=Mname
+            user_profile.Lname=Lname
 
             user_profile.save()
         return redirect('settings')
@@ -53,26 +59,24 @@ def settings(request):
 
 
 @login_required(login_url='login')
-def likes(request):
+def likes(request,id):
     user = request.user.username
-    postID = request.GET.get("post_id")
-
-    post = models.Post.objects.get(id=postID)
-
+    post = models.Post.objects.get(id=id)
     filterLike = models.LikePost.objects.filter(
-        postid=postID, username=user).first()
+        postid=id, username=user).first()
 
     if filterLike == None:
-        newLike = models.LikePost.objects.create(postid=postID, username=user)
+        newLike = models.LikePost.objects.create(postid=id, username=user)
         post.Likes += 1
         newLike.save()
         post.save()
-        return redirect('home')
+        return redirect(request.META.get('HTTP_REFERER'))
     else:
         filterLike.delete()
         post.Likes -= 1
         post.save()
-        return redirect('home')
+        # return redirect('home')
+        return redirect(request.META.get('HTTP_REFERER'))
 
 
 def signup(request):
@@ -106,7 +110,9 @@ def signup(request):
                 user_model = User.objects.get(username=username)
                 
                 new_profile = models.Profile.objects.create(
-                    usr=user_model, id_usr=user_model.id)
+                    usr=user_model, id_usr=user_model.id,Fname=fname,Lname=lname)
+            
+
                 new_profile.save()
 
                 messages.info(request, 'User Created.')
@@ -127,8 +133,6 @@ def login(request):
         password = request.POST.get("password")
 
         user = auth.authenticate(username=username, password=password)
-        user_obj = User.objects.get(username=username)
-        user_profile = models.Profile.objects.get(usr=user_obj)
         if user is not None:
             auth.login(request, user)
             return redirect('home')
@@ -213,7 +217,7 @@ def profile(request, pf):
         "followers": followers,
         "following": following
         }
-    print('type:', type(user_profile.img_profile.url),user_profile.img_profile.url, end="")
+    # print('type:', type(user_profile.img_profile.url),user_profile.img_profile.url, end="")
     return render(request, 'profile.html', context)
 
 

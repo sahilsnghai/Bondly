@@ -1,28 +1,31 @@
 {% load static %}
 {% include 'header.html' %}
-<body>
-    <form action="/search" method="POST">
-        {% csrf_token %}
-        <div class="left-side">
-            <input type='text' list="usernames" name="username">
-            <button type="submit" style="padding-top:0.1px"><i>&#10159;</i></button>
-        </div>
-    </form>
+
+
+    <div class="search-form center" id="search-form">
+        <form action="/search" method="POST">
+            {% csrf_token %}
+            <input type="text" placeholder="Search..." name="username">
+            <input type="submit" value="Search">
+        </form>
+    </div>
+
+
     {% for users in user_profile_list %}
     <section class="search-result-item">
-        <a class="image-link" href="/profile/{{users.usr}}"><img class="image" width=100 height=100 src="{{users.img_profile.url}}">
+        <a class="image-link" href="/profile/{{users.usr}}"><img class="image" width=100 height=100
+                src="{{users.img_profile.url}}">
         </a>
-        <div href="/profile/{{users.usr}}" >
+        <div href="/profile/{{users.usr}}">
             <div class="row">
-                <div  href="/profile/{{users.usr}}" class="col-sm-9">
+                <div href="/profile/{{users.usr}}" class="col-sm-9">
                     <h4 class="search-result-item-heading"><a href="/profile/{{users.usr}}"><b>@{{users.usr}}</b></a>
                     </h4>
-                    <p class="info">{{users.location}}  &nbsp;  {{users.bio}}</p>
-                    <!-- <p class="description">{{users.bio}}</p> -->
+                    <p class="info">{{users.Fname}} &nbsp; {{users.Lname}}</p>
+                    <p class="info">{{users.location}} &nbsp; {{users.bio}}</p>
                 </div>
             </div>
         </div>
     </section>
     {% endfor %}
-</body>
 {% include 'footer.html' %}

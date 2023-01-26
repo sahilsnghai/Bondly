@@ -1,0 +1,83 @@
+.User-profile {
+    width: 33.33%;
+    padding-left: 15px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.fllwos { 
+    float: right;
+    text-align: right;
+    padding-right: 15px;
+    margin-top: -125px;
+} 
+
+.User-posts {
+    width: 40%;
+    margin: 5px auto;
+    background-color: grey;
+    border-radius: 2%;
+    text-align: center;
+}
+
+.post {
+    width: 20%;
+}
+
+hr{
+    background-color: black;
+}
+
+.post img {
+    margin: 5px auto -10px auto;
+
+}
+
+.postBottom{
+    background-color: white;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.like {
+    text-decoration: solid;
+    text-size-adjust: inherit;
+    font-size: small;
+    color: black;
+    text-align: left;
+    padding: -10px 5px -10px;
+
+}
+
+.username {
+    text-align: left;
+    padding: 10px 5px;
+    margin: auto;
+    color: black;
+    background-color: white;
+    border-radius: 3%;
+
+}
+
+.username a {
+    color: black;
+    text-decoration: none;
+}
+
+@media(max-width:750px) {
+    .User-posts {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(min-width:751px) and (max-width:999px) {
+    .User-posts {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media(min-width: 1000px) {
+    .User-posts {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}

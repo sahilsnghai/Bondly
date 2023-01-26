@@ -1,41 +1,57 @@
 {% load static %}
 {% include 'header.html' %}
-<body>
-    <section>
-        <div>
-            <p>Bio &#10159; {{user_profile.bio}}</p>
-        </div>
-    </section>
-    <br>
-    <div>
-        {% if postsNum == 0 %}
-        <pre>No Post</pre>
-        {% elif postsNum == 1 %}
-        <pre>{{postsNum}} Post</pre>
-        {% else %}
-        <pre>{{postsNum}} Posts</pre>
-        {% endif %}
 
-        {% if followers == 0 or followers == 1 %}
-        <span>
-            <pre>{{followers}} follower</pre>
-        </span>
-        {% else %}
-        <span>
-            <pre>{{followers}} followers</pre>
-        </span>
-        {% endif %}
-        <span>
-            <pre>{{following}} following</pre>
-        </span>
+<section>
+    <div class="User-profile">
+        <p> <b>{{user_profile.Fname}} {{user_profile.Lname}} </b> </p>
+        <p> {{user_profile.bio}}</p>
     </div>
-    <hr>
+</section>
+<br>
+<div class="fllwos">
+    {% if postsNum == 0 %}
+    <pre>No Post</pre>
+    {% elif postsNum == 1 %}
+    <pre>{{postsNum}} Post</pre>
+    {% else %}
+    <pre>{{postsNum}} Posts</pre>
+    {% endif %}
 
-    {% for post in posts %}
-    {{user_profile}}<br>
-    <a class="strip" href="{{post.image.url}}" title="" height='50%' width="45%">
-        <img src="{{post.image.url}}" height='50%' width="45%" alt=""></a>
-    {% endfor %}
+    {% if followers == 0 or followers == 1 %}
+    <span>
+        <pre>{{followers}} follower</pre>
+    </span>
+    {% else %}
+    <span>
+        <pre>{{followers}} followers</pre>
+    </span>
+    {% endif %}
+    <span>
+        <pre>{{following}} following</pre>
+    </span>
+</div>
+<hr>
 
-</body>
+{% for post in posts %}
+<div class="User-posts">
+    <div class="username"> <a href="">@{{post.user}}</a> </div>
+    <a class="post" href="{{post.image.url}}" height='50%' width="45%">
+        <img src="{{post.image.url}}" height='50%' width="45%" alt="{{post.caption}}"></a>
+    <br>
+    <div class="postBottom">
+        
+        <h4>Caption: {{post.caption}}</h4>
+        {% if post.Likes == 0 %}
+        {{pass}}
+        {% elif post.Likes == 1 %}
+        <p>Liked by {{post.Likes}} person</p>
+        {% else %}
+        <p>Liked by {{post.Likes}} people</p>
+        {% endif %}
+        <a class="like" href="{% url 'likes' post.id %}">Like</a> &nbsp;
+        <a class="like" href="{% url 'likes' post.id %}">Comment</a>  &nbsp;
+        <a class="like" href="{% url 'likes' post.id %}">Share</a>  &nbsp;
+    </div>
+</div>
+{% endfor %}
 {% include 'footer.html' %}

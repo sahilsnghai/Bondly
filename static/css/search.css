@@ -1,0 +1,35 @@
+
+.search-form {
+    background-color: rgb(245, 239, 239);
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    height: 50px;
+    padding: 10px;
+  }
+  .search-form input[type="text"] {
+    width: 60%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+  }
+  .search-form input[type="submit"] {
+    width: 20%;
+    font-size: medium;
+    background-color: #34495e; /*#4CAF50*/
+    color: white;
+    padding: 12px 15px;
+    margin: 5px 0px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .search-form input[type="submit"]:hover {
+    background-color: #21303f; 
+  }
+  .search-result-item{
+    text-align: center;
+  }
+  

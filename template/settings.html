@@ -1,25 +1,9 @@
 {% load static %}
-
-<!DOCTYPE>
-<html lang="en">
-
-<head>
-    <title>Settings</title>
-    <style>
-        a { text-decoration: none; color:black;}
-      </style>
-
-</head>
+{% include 'header.html' %}
 
 <body>
-    {% include 'header.html' %}
     <h1>Bondly Profile Settings</h1>
     <h4>{{user.username}}</h4>
-
-    <button><a href="home" style="margin:2%;"> home </a></button>
-    <button><a href="logout" style="margin:2%;">logout</a></button>
-
-
 
     <br>
     <hr>
@@ -50,5 +34,3 @@
         </div>
     </form>
 </body>
-
-</html>

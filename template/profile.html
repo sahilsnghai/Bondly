@@ -32,7 +32,7 @@
 </div>
 <hr>
 
-{% for post in posts %}
+{% for post in posts reversed %}
 <div class="User-posts">
     <div class="username"> <a href="">@{{post.user}}</a> </div>
     <a class="post" href="{{post.image.url}}" height='50%' width="45%">

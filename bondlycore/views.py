@@ -8,9 +8,15 @@ from itertools import chain
 # Create your views here.
 
 
+def title(request):
+    Title = str(request.path[1:]).capitalize()
+    if request.path == "/":
+        Title = "Bondly"
+    return Title
+
 def index(request):
     logout(request)
-    return render(request, 'index.html')
+    return render(request, 'index.html',{"title":title(request)})
 
 
 @login_required(login_url="login")
@@ -171,7 +177,7 @@ def home(request):
     feedList = list(chain(*feed))
 
     # feed_post = models.Post.objects.all()
-    context = {"user_profile": user_profile,"user_object": user_obj, "posts": feedList}
+    context = {"user_profile": user_profile,"user_object": user_obj, "posts": feedList,"title":title(request)}
     return render(request, 'home.html', context)
 
 
